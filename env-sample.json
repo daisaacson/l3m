@@ -1,5 +1,5 @@
 {
-  "ollama_url": "http://ollama.local:11434",
-  "openwebui_host": "ai.local",
-  "searxng_host": "search.local"
+  "ollama_url": "http://ollama.example.com:11434",
+  "openwebui_host": "ai.example.com",
+  "searxng_host": "search.example.com"
 }
