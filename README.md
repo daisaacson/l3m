@@ -6,11 +6,11 @@ Local Large Language Model - An attempt to create a full AI stack locally
 
 ```shell
 kubectl apply \
-  -f searxng/namespace.yml \
-  -f searxng/persistentvolumeclaim.yml \
-  -f searxng/deployment.yml \
-  -f searxng/service.yml
-jinja2 searxng/ingress.yml.j2 env.json | \
+  -f searxng/namespace.yaml \
+  -f searxng/persistentvolumeclaim.yaml \
+  -f searxng/deployment.yaml \
+  -f searxng/service.yaml
+jinja2 searxng/ingress.yaml.j2 env.json | \
   kubectl apply -f -
 ```
 
