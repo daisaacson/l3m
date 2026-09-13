@@ -1,0 +1,64 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: searxng
+  namespace: searxng
+spec:
+  selector:
+    matchLabels:
+      app: searxng
+  template:
+    metadata:
+      labels:
+        app: searxng
+    spec:
+      containers:
+      - name: searxng
+        image: docker.io/searxng/searxng:2026.9.5-c7f3080aa
+        env:
+        - name: TZ
+          value: America/Chicago
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: searxng-config
+          mountPath: /etc/searxng/
+        - name: searxng-data
+          mountPath: /var/cache/searxng/
+      volumes:
+      - name: searxng-config
+        persistentVolumeClaim:
+          claimName: searxng-config-pvc
+      - name: searxng-data
+        persistentVolumeClaim:
+          claimName: searxng-data-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: valkey
+  namespace: searxng
+spec:
+  selector:
+    matchLabels:
+     app: valkey
+  template:
+    metadata:
+      labels:
+        app: valkey
+    spec:
+      containers:
+      - name: valkey
+        image: docker.io/valkey/valkey:9.0.6-alpine3.24
+        command: ["valkey-server", "--save 30 1", "--loglevel warning"]
+        env:
+        - name: TZ
+          value: America/Chicago
+        volumeMounts:
+        - name: valkey-data
+          mountPath: /data/
+      volumes:
+      - name: valkey-data
+        persistentVolumeClaim:
+          claimName: valkey-data-pvc
