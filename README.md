@@ -1,6 +1,13 @@
 # l3m
 Local Large Language Model - An attempt to create a full AI stack locally
 
+## Prerequisites
+
+Items not convered here:
+* Load balancer: [metallb](https://metallb.io/)
+* Cert-manager: [Cert-manager](https://cert-manager.io/)
+  * Certifates: [Let's Encrypt](https://letsencrypt.org/)
+* Storage: [Longhorn](https://longhorn.io/)
 
 ## searxng
 
