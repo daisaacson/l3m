@@ -21,6 +21,14 @@ jinja2 searxng/ingress.yaml.j2 env.json | \
   kubectl apply -f -
 ```
 
+```plaintext
+vi /etc/searxng/settings.yml
+search:
+  formats:
+    - html
+    - json
+```
+
 ## open-webui
 
 I'm using the [Quick Start](https://docs.openwebui.com/getting-started/quick-start/).  
@@ -33,3 +41,5 @@ helm repo update
 jinja2 open-webui/values.yaml.j2 env.json | \
   helm upgrade --install -n openwebui openwebui open-webui/open-webui -f -
 ```
+
+Configure web search
