@@ -2,12 +2,9 @@ ollama:
   enabled: false
 ollamaUrls: [{{ ollama_url | default("ollama.local:11434") }}]
 enableOpenaiApi: false
-managedCertificate:
-  enabled: false
-  name: "{{ openwebui_host | default("openwebui.local") }}-cert"
-  domains:
-    - {{ openwebui_host }}
 ingress:
   enabled: true
   host: {{ openwebui_host | default("openwebui.local") }}
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   tls: true
