@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: searxng
-        image: docker.io/searxng/searxng:2026.9.23-dcf1d477a
+        image: docker.io/searxng/searxng:2026.9.30-a9d990033
         env:
         - name: TZ
           value: America/Chicago
